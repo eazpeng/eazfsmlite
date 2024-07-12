@@ -9,6 +9,7 @@
         "stdio.h": "c",
         "malloc.h": "c",
         "math.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "fsm_atom.h": "c"
     }
 }

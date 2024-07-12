@@ -4,7 +4,7 @@
 		{
 			"type": "cppbuild",
 			"label": "Ver0711.1",
-			"command": "C:\\MinGW\\bin\\gcc.exe",
+			"command": "gcc.exe",//设置了环境变量，就不需要写完整路径了
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
@@ -36,7 +36,7 @@
 				"$gcc"
 			],
 			"group": "build",
-			"detail": "compiler: C:\\MinGW\\bin\\gcc.exe"
+			"detail": "compiler: gcc.exe"
 		}
 	]
 }

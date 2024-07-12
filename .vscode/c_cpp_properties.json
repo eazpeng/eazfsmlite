@@ -4,10 +4,12 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/fsm_lite/**",
-                "${workspaceFolder}/fsm_lite/fsm_atom/fsm_atom_state_**/**",
-                "${workspaceFolder}/config/**",
-                "${workspaceFolder}/event/**"
+                "${workspaceFolder}/**/**",
+                "${workspaceFolder}/**/**/**",
+                "${workspaceFolder}/**/**/**/**"
+                // "${workspaceFolder}/**/**/fsm_atom_state_**/**",
+                // "${workspaceFolder}/config/**",
+                // "${workspaceFolder}/event/**"
             ],
             "defines": [
                 "_DEBUG",
