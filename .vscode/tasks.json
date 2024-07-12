@@ -1,0 +1,42 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "Ver0711.1",
+			"command": "C:\\MinGW\\bin\\gcc.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"-I",
+				"${workspaceFolder}\\fsm_lite",
+				"-I",
+				"${workspaceFolder}\\config",
+				"-I",
+				"${workspaceFolder}\\event",
+				"-I",
+				"${workspaceFolder}\\fsm_lite\\fsm_atom",
+				"-I",
+				"${workspaceFolder}\\fsm_lite\\fsm_atom\\fsm_atom_state_standby",
+				"-I",
+				"${workspaceFolder}\\fsm_lite\\fsm_atom\\fsm_atom_state_power_on",
+				"${workspaceFolder}\\*.c",
+				"${workspaceFolder}\\fsm_lite\\*.c",
+				"${workspaceFolder}\\event\\*.c",
+				"${workspaceFolder}\\fsm_lite\\fsm_atom\\*.c",
+				"${workspaceFolder}\\fsm_lite\\fsm_atom\\fsm_atom_state_standby\\*.c",
+				"${workspaceFolder}\\fsm_lite\\fsm_atom\\fsm_atom_state_power_on\\*.c",
+				"-o",
+				"${workspaceFolder}\\build\\fsm_lite.exe"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: C:\\MinGW\\bin\\gcc.exe"
+		}
+	]
+}

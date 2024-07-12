@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "fsm_lite.h": "c",
+        "fsm_atom_state_power_on.h": "c",
+        "fsm_atom_state_standby.h": "c",
+        "event.h": "c",
+        "config.h": "c",
+        "eaz_types.h": "c",
+        "stdio.h": "c",
+        "malloc.h": "c",
+        "math.h": "c",
+        "string.h": "c"
+    }
+}
