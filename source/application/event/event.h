@@ -12,6 +12,7 @@
 #define _EVENT_H_
 
 #include "config.h"
+#include "key_event.h"
 
 #define EVENT_QUEUE_SIZE            (0x20)          // 事件队列长度
 

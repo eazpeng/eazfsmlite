@@ -19,6 +19,7 @@
  */
 #include "config.h"
 #include "event.h"
+#include "simu_timer.h"
 
 #pragma pack(push,1)
 typedef struct tagEventQueue {
@@ -106,7 +107,15 @@ EVENT_QUEUE_STATE GetEvent(PEvent psEvent)
     return eResultState;
 }
 
+void EventCollector(void)
+{
+    if(TimeOut(SIMU_TIMER_EVENT)) {
+        KeyEventCollector();
+    }
+}
+
 void EventInit(void)
 {
+    StartTimer(SIMU_TIMER_EVENT, 100);
     memset((uint8 *)&s_sEventQueue, 0, sizeof(s_sEventQueue));
 }

@@ -15,13 +15,5 @@
 #include "stdio.h"
 #include "eaz_types.h"
 
-#ifdef _C51_KEYWORDS_
-
-#else
-#define data
-#define EI()
-#define DI()
-#endif // _C51_KEYWORDS_
-
 
 #endif // _CONFIG_H_

@@ -75,7 +75,7 @@ int8 FsmLite_Init(PFsmLite psFsmLite, PFsmState psFsmStatesList, int32 lListSize
         return -1;
     }
     
-    // REMAP
+    // RE-SORT
     for(uint8 i = 0; i < lListSize; i ++) {
         if(psFsmStatesList[i].eID < lListSize) {
             vs_psState->ppsFsmStatesPtrList[psFsmStatesList[i].eID] = &psFsmStatesList[i];

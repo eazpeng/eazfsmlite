@@ -6,10 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/**/**",
                 "${workspaceFolder}/**/**/**",
-                "${workspaceFolder}/**/**/**/**"
-                // "${workspaceFolder}/**/**/fsm_atom_state_**/**",
-                // "${workspaceFolder}/config/**",
-                // "${workspaceFolder}/event/**"
+                "${workspaceFolder}/**/**/**/**",
+                "${workspaceFolder}/**/**/**/**/**"
             ],
             "defines": [
                 "_DEBUG",

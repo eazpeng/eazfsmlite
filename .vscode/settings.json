@@ -10,6 +10,7 @@
         "malloc.h": "c",
         "math.h": "c",
         "string.h": "c",
-        "fsm_atom.h": "c"
+        "fsm_atom.h": "c",
+        "simu_timer.h": "c"
     }
 }

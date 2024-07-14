@@ -5,9 +5,14 @@ void delay(long t)
     while(t --);
 }
 
+#define TEST_BIN (0x01011012L & 0x02)
+
 volatile static Event vs_sEvent;
 void main(void)
 {
+    long L;
+    L = TEST_BIN;
+
     FsmAtomInit();
     for(;;) {
         delay(10000000);

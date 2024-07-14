@@ -8,11 +8,28 @@
  * @brief       各平台常见的宏、类型别名综合整理。
  */
 #ifndef _EAZ_TYPES_H_
+#define _EAZ_TYPES_H_
+
+// #define EAZ_BIG_ENDIAN
 
 // #define offsetof(struct_type, member_name) ((size_t)&((struct_type *)0)->member_name)
 // // #define container_of(member_addr, struct_type, member_name) ({const typeof( ((struct_type *)0)->member_name ) *__mptr = (member_addr); (struct_type *)( (char *)__mptr - offsetof(struct_type,member_name) );})
 // #define container_of(member_addr, struct_type, member_name) ((struct_type *)((char *)member_addr - offsetof(struct_type, member_name)))
 
+#define C51_DEFINE_REGION
+#ifdef  C51_DEFINE_REGION
+#ifdef _C51_KEYWORDS_
+
+#else
+#define data
+#define EI()
+#define DI()
+#define bit             BOOL
+#endif // _C51_KEYWORDS_
+#endif // C51_DEFINE_REGION
+
+#define NORMAL_VALUES_DEFINE_REGION
+#ifdef  NORMAL_VALUES_DEFINE_REGION
 #ifndef TRUE
 #define TURE            (1)
 #define FALSE           (0)
@@ -55,8 +72,11 @@
 #ifndef null
 #define null            ((void *)0)
 #endif // !NULL
+#endif // NORMAL_VALUES_DEFINE_REGION
 
-// normal types
+#define NORMAL_TYPES_DEFINE_REGION
+#ifdef  NORMAL_TYPES_DEFINE_REGION
+
 typedef char            BOOL;
 
 typedef char            s8;
@@ -131,8 +151,186 @@ typedef unsigned long   UINT32;
 typedef unsigned long   u32_t;
 typedef unsigned long   ulong_t;
 typedef unsigned long   uint32_t;
+#endif // NORMAL_TYPES_DEFINE_REGION
 
-// function pointers
+#define EAZ_TYPES_DEFINE_REGION
+#ifdef EAZ_TYPES_DEFINE_REGION
+typedef union tagEazChar{
+    uint8       value;
+
+    struct {
+        uint8   bit0  : 1;
+        uint8   bit1  : 1;
+        uint8   bit2  : 1;
+        uint8   bit3  : 1;
+        uint8   bit4  : 1;
+        uint8   bit5  : 1;
+        uint8   bit6  : 1;
+        uint8   bit7  : 1;
+    }sFlags;
+}EazChar, *PEazChar, EazInt8, *PEazInt8;
+
+#ifdef EAZ_BIG_ENDIAN
+typedef union tagEazInt{
+    uint16      value;
+
+    struct {
+        uint8   byte1;
+        uint8   byte0;
+    }sBytes;
+
+    struct {
+        uint8   bit8  : 1;
+        uint8   bit9  : 1;
+        uint8   bit10 : 1;
+        uint8   bit11 : 1;
+        uint8   bit12 : 1;
+        uint8   bit13 : 1;
+        uint8   bit14 : 1;
+        uint8   bit15 : 1;
+
+        uint8   bit0  : 1;
+        uint8   bit1  : 1;
+        uint8   bit2  : 1;
+        uint8   bit3  : 1;
+        uint8   bit4  : 1;
+        uint8   bit5  : 1;
+        uint8   bit6  : 1;
+        uint8   bit7  : 1;
+    }sFlags;
+}EazInt, *PEazInt, EazInt16, *PEazInt16;
+
+typedef union tagEazLong{
+    uint32      value;
+
+    struct {
+        uint8   byte3;
+        uint8   byte2;
+        uint8   byte1;
+        uint8   byte0;
+    }sBytes;
+
+    struct {
+        uint8   bit24 : 1;
+        uint8   bit25 : 1;
+        uint8   bit26 : 1;
+        uint8   bit27 : 1;
+        uint8   bit28 : 1;
+        uint8   bit29 : 1;
+        uint8   bit30 : 1;
+        uint8   bit31 : 1;
+
+        uint8   bit16 : 1;
+        uint8   bit17 : 1;
+        uint8   bit18 : 1;
+        uint8   bit19 : 1;
+        uint8   bit20 : 1;
+        uint8   bit21 : 1;
+        uint8   bit22 : 1;
+        uint8   bit23 : 1;
+
+        uint8   bit8  : 1;
+        uint8   bit9  : 1;
+        uint8   bit10 : 1;
+        uint8   bit11 : 1;
+        uint8   bit12 : 1;
+        uint8   bit13 : 1;
+        uint8   bit14 : 1;
+        uint8   bit15 : 1;
+
+        uint8   bit0  : 1;
+        uint8   bit1  : 1;
+        uint8   bit2  : 1;
+        uint8   bit3  : 1;
+        uint8   bit4  : 1;
+        uint8   bit5  : 1;
+        uint8   bit6  : 1;
+        uint8   bit7  : 1;
+    }sFlags;
+}EazLong, *PEazLong, EazInt32, *PEazInt32;
+#else
+typedef union tagEazInt{
+    uint16      value;
+
+    struct {
+        uint8   byte0;
+        uint8   byte1;
+    }sBytes;
+
+    struct {
+        uint8   bit0  : 1;
+        uint8   bit1  : 1;
+        uint8   bit2  : 1;
+        uint8   bit3  : 1;
+        uint8   bit4  : 1;
+        uint8   bit5  : 1;
+        uint8   bit6  : 1;
+        uint8   bit7  : 1;
+
+        uint8   bit8  : 1;
+        uint8   bit9  : 1;
+        uint8   bit10 : 1;
+        uint8   bit11 : 1;
+        uint8   bit12 : 1;
+        uint8   bit13 : 1;
+        uint8   bit14 : 1;
+        uint8   bit15 : 1;
+    }sFlags;
+}EazInt, *PEazInt, EazInt16, *PEazInt16;
+
+typedef union tagEazLong{
+    uint32      value;
+
+    struct {
+        uint8   byte0;
+        uint8   byte1;
+        uint8   byte2;
+        uint8   byte3;
+    }sBytes;
+
+    struct {
+        uint8   bit0  : 1;
+        uint8   bit1  : 1;
+        uint8   bit2  : 1;
+        uint8   bit3  : 1;
+        uint8   bit4  : 1;
+        uint8   bit5  : 1;
+        uint8   bit6  : 1;
+        uint8   bit7  : 1;
+        
+        uint8   bit8  : 1;
+        uint8   bit9  : 1;
+        uint8   bit10 : 1;
+        uint8   bit11 : 1;
+        uint8   bit12 : 1;
+        uint8   bit13 : 1;
+        uint8   bit14 : 1;
+        uint8   bit15 : 1;
+
+        uint8   bit16 : 1;
+        uint8   bit17 : 1;
+        uint8   bit18 : 1;
+        uint8   bit19 : 1;
+        uint8   bit20 : 1;
+        uint8   bit21 : 1;
+        uint8   bit22 : 1;
+        uint8   bit23 : 1;
+
+        uint8   bit24 : 1;
+        uint8   bit25 : 1;
+        uint8   bit26 : 1;
+        uint8   bit27 : 1;
+        uint8   bit28 : 1;
+        uint8   bit29 : 1;
+        uint8   bit30 : 1;
+        uint8   bit31 : 1;
+    }sFlags;
+}EazLong, *PEazLong, EazInt32, *PEazInt32;
+#endif // EAZ_BIG_ENDIAN
+#endif // EAZ_TYPES_DEFINE_REGION
+
+#define FUNCTION_POINTER_TYPES_DEFINE_REGION
+#ifdef  FUNCTION_POINTER_TYPES_DEFINE_REGION
 typedef void            (*FP_VVP)(void *);
 typedef void *          (*FP_VPVP)(void *);
 typedef void            (*FP_VV)(void);
@@ -237,7 +435,6 @@ typedef void            (*FunPtr_VoidUint32)(unsigned long);
 typedef void            (*FunPtr_VoidInt8)(char);
 typedef void            (*FunPtr_VoidInt16)(short);
 typedef void            (*FunPtr_VoidInt32)(long);
-
-
+#endif // FUNCTION_POINTER_TYPES_DEFINE_REGION
 
 #endif // !_EAZ_TYPES_H_
