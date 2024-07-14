@@ -170,86 +170,7 @@ typedef union tagEazChar{
     }sFlags;
 }EazChar, *PEazChar, EazInt8, *PEazInt8;
 
-#ifdef EAZ_BIG_ENDIAN
-typedef union tagEazInt{
-    uint16      value;
-
-    struct {
-        uint8   byte1;
-        uint8   byte0;
-    }sBytes;
-
-    struct {
-        uint8   bit8  : 1;
-        uint8   bit9  : 1;
-        uint8   bit10 : 1;
-        uint8   bit11 : 1;
-        uint8   bit12 : 1;
-        uint8   bit13 : 1;
-        uint8   bit14 : 1;
-        uint8   bit15 : 1;
-
-        uint8   bit0  : 1;
-        uint8   bit1  : 1;
-        uint8   bit2  : 1;
-        uint8   bit3  : 1;
-        uint8   bit4  : 1;
-        uint8   bit5  : 1;
-        uint8   bit6  : 1;
-        uint8   bit7  : 1;
-    }sFlags;
-}EazInt, *PEazInt, EazInt16, *PEazInt16;
-
-typedef union tagEazLong{
-    uint32      value;
-
-    struct {
-        uint8   byte3;
-        uint8   byte2;
-        uint8   byte1;
-        uint8   byte0;
-    }sBytes;
-
-    struct {
-        uint8   bit24 : 1;
-        uint8   bit25 : 1;
-        uint8   bit26 : 1;
-        uint8   bit27 : 1;
-        uint8   bit28 : 1;
-        uint8   bit29 : 1;
-        uint8   bit30 : 1;
-        uint8   bit31 : 1;
-
-        uint8   bit16 : 1;
-        uint8   bit17 : 1;
-        uint8   bit18 : 1;
-        uint8   bit19 : 1;
-        uint8   bit20 : 1;
-        uint8   bit21 : 1;
-        uint8   bit22 : 1;
-        uint8   bit23 : 1;
-
-        uint8   bit8  : 1;
-        uint8   bit9  : 1;
-        uint8   bit10 : 1;
-        uint8   bit11 : 1;
-        uint8   bit12 : 1;
-        uint8   bit13 : 1;
-        uint8   bit14 : 1;
-        uint8   bit15 : 1;
-
-        uint8   bit0  : 1;
-        uint8   bit1  : 1;
-        uint8   bit2  : 1;
-        uint8   bit3  : 1;
-        uint8   bit4  : 1;
-        uint8   bit5  : 1;
-        uint8   bit6  : 1;
-        uint8   bit7  : 1;
-    }sFlags;
-}EazLong, *PEazLong, EazInt32, *PEazInt32;
-#else
-typedef union tagEazInt{
+typedef union tagEazInt_LE{
     uint16      value;
 
     struct {
@@ -276,9 +197,9 @@ typedef union tagEazInt{
         uint8   bit14 : 1;
         uint8   bit15 : 1;
     }sFlags;
-}EazInt, *PEazInt, EazInt16, *PEazInt16;
+}EazInt_LE, *PEazInt_LE, EazInt16_LE, *PEazInt16_LE;
 
-typedef union tagEazLong{
+typedef union tagEazLong_LE{
     uint32      value;
 
     struct {
@@ -325,7 +246,105 @@ typedef union tagEazLong{
         uint8   bit30 : 1;
         uint8   bit31 : 1;
     }sFlags;
-}EazLong, *PEazLong, EazInt32, *PEazInt32;
+}EazLong_LE, *PEazLong_LE, EazInt32_LE, *PEazInt32_LE;
+
+typedef union tagEazInt_BE{
+    uint16      value;
+
+    struct {
+        uint8   byte1;
+        uint8   byte0;
+    }sBytes;
+
+    struct {
+        uint8   bit8  : 1;
+        uint8   bit9  : 1;
+        uint8   bit10 : 1;
+        uint8   bit11 : 1;
+        uint8   bit12 : 1;
+        uint8   bit13 : 1;
+        uint8   bit14 : 1;
+        uint8   bit15 : 1;
+
+        uint8   bit0  : 1;
+        uint8   bit1  : 1;
+        uint8   bit2  : 1;
+        uint8   bit3  : 1;
+        uint8   bit4  : 1;
+        uint8   bit5  : 1;
+        uint8   bit6  : 1;
+        uint8   bit7  : 1;
+    }sFlags;
+}EazInt_BE, *PEazInt_BE, EazInt16_BE, *PEazInt16_BE;
+
+typedef union tagEazLong_BE{
+    uint32      value;
+
+    struct {
+        uint8   byte3;
+        uint8   byte2;
+        uint8   byte1;
+        uint8   byte0;
+    }sBytes;
+
+    struct {
+        uint8   bit24 : 1;
+        uint8   bit25 : 1;
+        uint8   bit26 : 1;
+        uint8   bit27 : 1;
+        uint8   bit28 : 1;
+        uint8   bit29 : 1;
+        uint8   bit30 : 1;
+        uint8   bit31 : 1;
+
+        uint8   bit16 : 1;
+        uint8   bit17 : 1;
+        uint8   bit18 : 1;
+        uint8   bit19 : 1;
+        uint8   bit20 : 1;
+        uint8   bit21 : 1;
+        uint8   bit22 : 1;
+        uint8   bit23 : 1;
+
+        uint8   bit8  : 1;
+        uint8   bit9  : 1;
+        uint8   bit10 : 1;
+        uint8   bit11 : 1;
+        uint8   bit12 : 1;
+        uint8   bit13 : 1;
+        uint8   bit14 : 1;
+        uint8   bit15 : 1;
+
+        uint8   bit0  : 1;
+        uint8   bit1  : 1;
+        uint8   bit2  : 1;
+        uint8   bit3  : 1;
+        uint8   bit4  : 1;
+        uint8   bit5  : 1;
+        uint8   bit6  : 1;
+        uint8   bit7  : 1;
+    }sFlags;
+}EazLong_BE, *PEazLong_BE, EazInt32_BE, *PEazInt32_BE;
+#ifdef EAZ_BIG_ENDIAN
+#define EazInt          EazInt_BE
+#define PEazInt         PEazInt_BE
+#define EazInt16        EazInt16_BE
+#define PEazInt16       PEazInt16_BE
+
+#define EazLong         EazLong_BE
+#define PEazLong        PEazLong_BE
+#define EazInt32        EazInt32_BE
+#define PEazInt32       PEazInt32_BE
+#else
+#define EazInt          EazInt_LE
+#define PEazInt         PEazInt_LE
+#define EazInt16        EazInt16_LE
+#define PEazInt16       PEazInt16_LE
+
+#define EazLong         EazLong_LE
+#define PEazLong        PEazLong_LE
+#define EazInt32        EazInt32_LE
+#define PEazInt32       PEazInt32_LE
 #endif // EAZ_BIG_ENDIAN
 #endif // EAZ_TYPES_DEFINE_REGION
 

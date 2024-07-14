@@ -397,4 +397,10 @@ typedef enum {
 #define ClrBit31(x)         ClrBit(x,31)
 #endif // BIT_OPERATION_DEFINE_REGION
 
+extern BOOL IsBigEndian(void * pValue);
+extern BOOL IsLittleEndian(void * pValue);
+extern void SwitchEndian(void * pValue, uint8 size);
+extern void SwitchToBigEndian(void * pValue, uint8 size);
+extern void SwitchToLittleEndian(void * pValue, uint8 size);
+
 #endif // !_EAZ_MATH_LIB_H_
